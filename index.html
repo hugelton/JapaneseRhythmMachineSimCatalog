@@ -1,10 +1,151 @@
-<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>JRMS Listening Catalog</title><style>:root{color-scheme:dark}body{font-family:system-ui,sans-serif;max-width:1120px;margin:28px auto;padding:0 18px;background:#111;color:#eee;line-height:1.5}a{color:#9cf}button{font:inherit;cursor:pointer}.nav{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 22px}.nav a{padding:7px 10px;border:1px solid #444;text-decoration:none}.summary{color:#aaa;max-width:850px}.hero{border-top:1px solid #333;border-bottom:1px solid #333;padding:18px 0;margin:18px 0}.catalog img{max-width:100%;height:auto}.machine{margin:30px 0}.machine h2{margin-bottom:8px}.machine ul{list-style:none;padding:0;margin:0}.machine li{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:8px 0;border-bottom:1px solid #222}.piece{min-width:240px}.links{display:flex;gap:8px}#player{position:sticky;bottom:0;width:100%;margin-top:24px;background:#111;padding:8px 0}@media(max-width:650px){.piece{min-width:0;width:100%}}</style></head><body>
-<h1>JRMS Listening Catalog</h1><p class='summary'>48 kHz deterministic DSP listening reference. This page is for browsing and comparing individual pieces. Pattern playback has been moved to its own page.</p>
-<nav class='nav'><a href='sequencer.html'>Open 16-step Sequencer</a><a href='https://github.com/hugelton/JapaneseRhythmMachineSimCatalog'>Catalog repository</a></nav>
+﻿<!doctype html><html><head><meta charset='utf-8'><meta name='viewport' content='width=device-width,initial-scale=1'><title>JRMS Listening Catalog</title><style>:root{color-scheme:dark}body{font-family:system-ui,sans-serif;max-width:1120px;margin:28px auto;padding:0 18px;background:#111;color:#eee;line-height:1.5}a{color:#9cf}button{font:inherit;cursor:pointer}.nav{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0 22px}.nav a{padding:7px 10px;border:1px solid #444;text-decoration:none}.summary{color:#aaa;max-width:850px}.hero{border-top:1px solid #333;border-bottom:1px solid #333;padding:18px 0;margin:18px 0}.catalog img{max-width:100%;height:auto}ul{list-style:none;padding:0}li{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:7px 0;border-bottom:1px solid #222}.prov{font-size:12px;color:#aaa}#player{position:sticky;bottom:0;width:100%;margin-top:24px;background:#111;padding:8px 0}</style></head><body>
+<h1>JRMS Listening Catalog</h1><p class='summary'>48 kHz deterministic DSP listening reference. Browse and compare individual JRMS pieces here; pattern playback lives on a separate page so the catalog stays focused.</p>
+<nav class='nav'><a href='sequencer.html'>Open 16-step sequencer</a><a href='https://github.com/hugelton/JapaneseRhythmMachineSimCatalog'>Catalog repository</a></nav>
 <div class='hero'><button type='button' onclick="playPreview('all_pieces.wav')">Play all pieces (~1 min)</button> <a href='all_pieces.wav'>WAV</a> <a href='all_pieces.png'>Waveform PNG</a> <a href='all_pieces.mp4'>MP4</a></div>
 <p class='catalog'><img src='all_pieces.png' alt='All pieces waveform'></p>
-<div id='catalog'></div><audio id='player' controls></audio><script src='catalog-data.js'></script><script>
-const player=document.getElementById('player');function playPreview(src){player.src=src;player.currentTime=0;player.play();}
-const root=document.getElementById('catalog');let current='';let section=null;let list=null;
-for(const p of pieces){const split=p.label.indexOf(' / ');const machine=split>=0?p.label.slice(0,split):'Other';const piece=split>=0?p.label.slice(split+3):p.label;if(machine!==current){current=machine;section=document.createElement('section');section.className='machine';const h=document.createElement('h2');h.textContent=machine;section.appendChild(h);list=document.createElement('ul');section.appendChild(list);root.appendChild(section);}const li=document.createElement('li');const name=document.createElement('strong');name.className='piece';name.textContent=piece;li.appendChild(name);const play=document.createElement('button');play.type='button';play.textContent='Play';play.onclick=()=>playPreview(p.wav);li.appendChild(play);const wav=document.createElement('a');wav.href=p.wav;wav.textContent='WAV';li.appendChild(wav);const png=document.createElement('a');png.href=p.wav.replace(/\.wav$/i,'.png');png.textContent='PNG';li.appendChild(png);list.appendChild(li);}
-</script></body></html>
+<h2>KP-77</h2><ul>
+<li><strong>Bass Drum</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_001.wav')">Play</button> <a href='audio/piece_001.wav'>WAV</a> <a href='audio/piece_001.png'>PNG</a></li>
+<li><strong>Snare Drum</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_002.wav')">Play</button> <a href='audio/piece_002.wav'>WAV</a> <a href='audio/piece_002.png'>PNG</a></li>
+<li><strong>Tom</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_003.wav')">Play</button> <a href='audio/piece_003.wav'>WAV</a> <a href='audio/piece_003.png'>PNG</a></li>
+<li><strong>Clap</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_004.wav')">Play</button> <a href='audio/piece_004.wav'>WAV</a> <a href='audio/piece_004.png'>PNG</a></li>
+<li><strong>Closed Hi-Hat</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_005.wav')">Play</button> <a href='audio/piece_005.wav'>WAV</a> <a href='audio/piece_005.png'>PNG</a></li>
+<li><strong>Open Hi-Hat</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_006.wav')">Play</button> <a href='audio/piece_006.wav'>WAV</a> <a href='audio/piece_006.png'>PNG</a></li>
+<li><strong>Cymbal</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_007.wav')">Play</button> <a href='audio/piece_007.wav'>WAV</a> <a href='audio/piece_007.png'>PNG</a></li>
+<li><strong>Claves</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_008.wav')">Play</button> <a href='audio/piece_008.wav'>WAV</a> <a href='audio/piece_008.png'>PNG</a></li>
+</ul>
+<h2>KD-55</h2><ul>
+<li><strong>Bass Drum</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_009.wav')">Play</button> <a href='audio/piece_009.wav'>WAV</a> <a href='audio/piece_009.png'>PNG</a></li>
+<li><strong>Snare Drum</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_010.wav')">Play</button> <a href='audio/piece_010.wav'>WAV</a> <a href='audio/piece_010.png'>PNG</a></li>
+<li><strong>Rimshot</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_011.wav')">Play</button> <a href='audio/piece_011.wav'>WAV</a> <a href='audio/piece_011.png'>PNG</a></li>
+<li><strong>Claves</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_012.wav')">Play</button> <a href='audio/piece_012.wav'>WAV</a> <a href='audio/piece_012.png'>PNG</a></li>
+<li><strong>Cowbell</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_013.wav')">Play</button> <a href='audio/piece_013.wav'>WAV</a> <a href='audio/piece_013.png'>PNG</a></li>
+<li><strong>Low Conga</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_014.wav')">Play</button> <a href='audio/piece_014.wav'>WAV</a> <a href='audio/piece_014.png'>PNG</a></li>
+<li><strong>High Conga</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_015.wav')">Play</button> <a href='audio/piece_015.wav'>WAV</a> <a href='audio/piece_015.png'>PNG</a></li>
+<li><strong>Low Tom</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_016.wav')">Play</button> <a href='audio/piece_016.wav'>WAV</a> <a href='audio/piece_016.png'>PNG</a></li>
+<li><strong>High Tom</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_017.wav')">Play</button> <a href='audio/piece_017.wav'>WAV</a> <a href='audio/piece_017.png'>PNG</a></li>
+<li><strong>Cymbal</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_018.wav')">Play</button> <a href='audio/piece_018.wav'>WAV</a> <a href='audio/piece_018.png'>PNG</a></li>
+<li><strong>Closed Hi-Hat</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_019.wav')">Play</button> <a href='audio/piece_019.wav'>WAV</a> <a href='audio/piece_019.png'>PNG</a></li>
+<li><strong>Open Hi-Hat</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_020.wav')">Play</button> <a href='audio/piece_020.wav'>WAV</a> <a href='audio/piece_020.png'>PNG</a></li>
+</ul>
+<h2>TD-66</h2><ul>
+<li><strong>Bass Drum</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_021.wav')">Play</button> <a href='audio/piece_021.wav'>WAV</a> <a href='audio/piece_021.png'>PNG</a></li>
+<li><strong>Rim Shot</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_022.wav')">Play</button> <a href='audio/piece_022.wav'>WAV</a> <a href='audio/piece_022.png'>PNG</a></li>
+<li><strong>Snare Drum</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_023.wav')">Play</button> <a href='audio/piece_023.wav'>WAV</a> <a href='audio/piece_023.png'>PNG</a></li>
+<li><strong>Closed Hi-Hat</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_024.wav')">Play</button> <a href='audio/piece_024.wav'>WAV</a> <a href='audio/piece_024.png'>PNG</a></li>
+<li><strong>Open Hi-Hat extension</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_025.wav')">Play</button> <a href='audio/piece_025.wav'>WAV</a> <a href='audio/piece_025.png'>PNG</a></li>
+<li><strong>Cymbal</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_026.wav')">Play</button> <a href='audio/piece_026.wav'>WAV</a> <a href='audio/piece_026.png'>PNG</a></li>
+<li><strong>High Bongo</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_027.wav')">Play</button> <a href='audio/piece_027.wav'>WAV</a> <a href='audio/piece_027.png'>PNG</a></li>
+<li><strong>Low Bongo</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_028.wav')">Play</button> <a href='audio/piece_028.wav'>WAV</a> <a href='audio/piece_028.png'>PNG</a></li>
+<li><strong>Low Conga extension</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_029.wav')">Play</button> <a href='audio/piece_029.wav'>WAV</a> <a href='audio/piece_029.png'>PNG</a></li>
+<li><strong>High Conga</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_030.wav')">Play</button> <a href='audio/piece_030.wav'>WAV</a> <a href='audio/piece_030.png'>PNG</a></li>
+<li><strong>Cow Bell</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_031.wav')">Play</button> <a href='audio/piece_031.wav'>WAV</a> <a href='audio/piece_031.png'>PNG</a></li>
+<li><strong>Claves</strong> <span class='prov'>[ExistingValidated]</span> <button type='button' onclick="playPreview('audio/piece_032.wav')">Play</button> <a href='audio/piece_032.wav'>WAV</a> <a href='audio/piece_032.png'>PNG</a></li>
+</ul>
+<h2>TD-80</h2><ul>
+<li><strong>Bass Drum</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_033.wav')">Play</button> <a href='audio/piece_033.wav'>WAV</a> <a href='audio/piece_033.png'>PNG</a></li>
+<li><strong>Snare Drum</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_034.wav')">Play</button> <a href='audio/piece_034.wav'>WAV</a> <a href='audio/piece_034.png'>PNG</a></li>
+<li><strong>Low Conga</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_035.wav')">Play</button> <a href='audio/piece_035.wav'>WAV</a> <a href='audio/piece_035.png'>PNG</a></li>
+<li><strong>Low Tom</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_036.wav')">Play</button> <a href='audio/piece_036.wav'>WAV</a> <a href='audio/piece_036.png'>PNG</a></li>
+<li><strong>Mid Conga</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_037.wav')">Play</button> <a href='audio/piece_037.wav'>WAV</a> <a href='audio/piece_037.png'>PNG</a></li>
+<li><strong>Mid Tom</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_038.wav')">Play</button> <a href='audio/piece_038.wav'>WAV</a> <a href='audio/piece_038.png'>PNG</a></li>
+<li><strong>High Conga</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_039.wav')">Play</button> <a href='audio/piece_039.wav'>WAV</a> <a href='audio/piece_039.png'>PNG</a></li>
+<li><strong>High Tom</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_040.wav')">Play</button> <a href='audio/piece_040.wav'>WAV</a> <a href='audio/piece_040.png'>PNG</a></li>
+<li><strong>Claves</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_041.wav')">Play</button> <a href='audio/piece_041.wav'>WAV</a> <a href='audio/piece_041.png'>PNG</a></li>
+<li><strong>Rim Shot</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_042.wav')">Play</button> <a href='audio/piece_042.wav'>WAV</a> <a href='audio/piece_042.png'>PNG</a></li>
+<li><strong>Maracas</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_043.wav')">Play</button> <a href='audio/piece_043.wav'>WAV</a> <a href='audio/piece_043.png'>PNG</a></li>
+<li><strong>Hand Clap</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_044.wav')">Play</button> <a href='audio/piece_044.wav'>WAV</a> <a href='audio/piece_044.png'>PNG</a></li>
+<li><strong>Cow Bell</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_045.wav')">Play</button> <a href='audio/piece_045.wav'>WAV</a> <a href='audio/piece_045.png'>PNG</a></li>
+<li><strong>Cymbal</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_046.wav')">Play</button> <a href='audio/piece_046.wav'>WAV</a> <a href='audio/piece_046.png'>PNG</a></li>
+<li><strong>Open Hi Hat</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_047.wav')">Play</button> <a href='audio/piece_047.wav'>WAV</a> <a href='audio/piece_047.png'>PNG</a></li>
+<li><strong>Closed Hi Hat</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_048.wav')">Play</button> <a href='audio/piece_048.wav'>WAV</a> <a href='audio/piece_048.png'>PNG</a></li>
+</ul>
+<h2>TD-90</h2><ul>
+<li><strong>Bass Drum</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_049.wav')">Play</button> <a href='audio/piece_049.wav'>WAV</a> <a href='audio/piece_049.png'>PNG</a></li>
+<li><strong>Snare Drum</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_050.wav')">Play</button> <a href='audio/piece_050.wav'>WAV</a> <a href='audio/piece_050.png'>PNG</a></li>
+<li><strong>Low Tom</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_051.wav')">Play</button> <a href='audio/piece_051.wav'>WAV</a> <a href='audio/piece_051.png'>PNG</a></li>
+<li><strong>Mid Tom</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_052.wav')">Play</button> <a href='audio/piece_052.wav'>WAV</a> <a href='audio/piece_052.png'>PNG</a></li>
+<li><strong>High Tom</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_053.wav')">Play</button> <a href='audio/piece_053.wav'>WAV</a> <a href='audio/piece_053.png'>PNG</a></li>
+<li><strong>Rim Shot</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_054.wav')">Play</button> <a href='audio/piece_054.wav'>WAV</a> <a href='audio/piece_054.png'>PNG</a></li>
+<li><strong>Hand Clap</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_055.wav')">Play</button> <a href='audio/piece_055.wav'>WAV</a> <a href='audio/piece_055.png'>PNG</a></li>
+</ul>
+<h2>BR-55</h2><ul>
+<li><strong>Bass Drum</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_056.wav')">Play</button> <a href='audio/piece_056.wav'>WAV</a> <a href='audio/piece_056.png'>PNG</a></li>
+<li><strong>Snare Drum</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_057.wav')">Play</button> <a href='audio/piece_057.wav'>WAV</a> <a href='audio/piece_057.png'>PNG</a></li>
+<li><strong>Rim Shot</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_058.wav')">Play</button> <a href='audio/piece_058.wav'>WAV</a> <a href='audio/piece_058.png'>PNG</a></li>
+<li><strong>Hi Hat</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_059.wav')">Play</button> <a href='audio/piece_059.wav'>WAV</a> <a href='audio/piece_059.png'>PNG</a></li>
+</ul>
+<h2>BR-110</h2><ul>
+<li><strong>Bass Drum</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_060.wav')">Play</button> <a href='audio/piece_060.wav'>WAV</a> <a href='audio/piece_060.png'>PNG</a></li>
+<li><strong>Snare Drum</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_061.wav')">Play</button> <a href='audio/piece_061.wav'>WAV</a> <a href='audio/piece_061.png'>PNG</a></li>
+<li><strong>Cymbal</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_062.wav')">Play</button> <a href='audio/piece_062.wav'>WAV</a> <a href='audio/piece_062.png'>PNG</a></li>
+<li><strong>Closed Hi-Hat</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_063.wav')">Play</button> <a href='audio/piece_063.wav'>WAV</a> <a href='audio/piece_063.png'>PNG</a></li>
+<li><strong>Open Hi-Hat</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_064.wav')">Play</button> <a href='audio/piece_064.wav'>WAV</a> <a href='audio/piece_064.png'>PNG</a></li>
+<li><strong>Hand Clap</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_065.wav')">Play</button> <a href='audio/piece_065.wav'>WAV</a> <a href='audio/piece_065.png'>PNG</a></li>
+</ul>
+<h2>RM-10</h2><ul>
+<li><strong>Bass Drum</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_066.wav')">Play</button> <a href='audio/piece_066.wav'>WAV</a> <a href='audio/piece_066.png'>PNG</a></li>
+<li><strong>Snare Drum</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_067.wav')">Play</button> <a href='audio/piece_067.wav'>WAV</a> <a href='audio/piece_067.png'>PNG</a></li>
+</ul>
+<h2>HX-2</h2><ul>
+<li><strong>Hand Clap</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_068.wav')">Play</button> <a href='audio/piece_068.wav'>WAV</a> <a href='audio/piece_068.png'>PNG</a></li>
+</ul>
+<h2>PX-2</h2><ul>
+<li><strong>Percussion Synthesizer</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_069.wav')">Play</button> <a href='audio/piece_069.wav'>WAV</a> <a href='audio/piece_069.png'>PNG</a></li>
+</ul>
+<h2>BX-1</h2><ul>
+<li><strong>Percussion Synthesizer</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_070.wav')">Play</button> <a href='audio/piece_070.wav'>WAV</a> <a href='audio/piece_070.png'>PNG</a></li>
+</ul>
+<h2>BX-2</h2><ul>
+<li><strong>Percussion Synthesizer + Noise</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_071.wav')">Play</button> <a href='audio/piece_071.wav'>WAV</a> <a href='audio/piece_071.png'>PNG</a></li>
+</ul>
+<h2>SX-1</h2><ul>
+<li><strong>Voice Board</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_072.wav')">Play</button> <a href='audio/piece_072.wav'>WAV</a> <a href='audio/piece_072.png'>PNG</a></li>
+</ul>
+<h2>TX-305</h2><ul>
+<li><strong>Bass Drum channel</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_073.wav')">Play</button> <a href='audio/piece_073.wav'>WAV</a> <a href='audio/piece_073.png'>PNG</a></li>
+<li><strong>Snare Drum channel</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_074.wav')">Play</button> <a href='audio/piece_074.wav'>WAV</a> <a href='audio/piece_074.png'>PNG</a></li>
+<li><strong>Tom channel</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_075.wav')">Play</button> <a href='audio/piece_075.wav'>WAV</a> <a href='audio/piece_075.png'>PNG</a></li>
+<li><strong>Rimshot channel</strong> <span class='prov'>[CircuitDerived]</span> <button type='button' onclick="playPreview('audio/piece_076.wav')">Play</button> <a href='audio/piece_076.wav'>WAV</a> <a href='audio/piece_076.png'>PNG</a></li>
+</ul>
+<h2>TX-306</h2><ul>
+<li><strong>Hand Clap channel</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_077.wav')">Play</button> <a href='audio/piece_077.wav'>WAV</a> <a href='audio/piece_077.png'>PNG</a></li>
+<li><strong>Synth channel</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_078.wav')">Play</button> <a href='audio/piece_078.wav'>WAV</a> <a href='audio/piece_078.png'>PNG</a></li>
+</ul>
+<h2>DRX-5</h2><ul>
+<li><strong>Bass Drum</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_079.wav')">Play</button> <a href='audio/piece_079.wav'>WAV</a> <a href='audio/piece_079.png'>PNG</a></li>
+<li><strong>Snare Drum</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_080.wav')">Play</button> <a href='audio/piece_080.wav'>WAV</a> <a href='audio/piece_080.png'>PNG</a></li>
+<li><strong>Tom 1</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_081.wav')">Play</button> <a href='audio/piece_081.wav'>WAV</a> <a href='audio/piece_081.png'>PNG</a></li>
+<li><strong>Tom 2</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_082.wav')">Play</button> <a href='audio/piece_082.wav'>WAV</a> <a href='audio/piece_082.png'>PNG</a></li>
+<li><strong>Tom 3</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_083.wav')">Play</button> <a href='audio/piece_083.wav'>WAV</a> <a href='audio/piece_083.png'>PNG</a></li>
+</ul>
+<h2>EK-70</h2><ul>
+<li><strong>Big Taiko</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_084.wav')">Play</button> <a href='audio/piece_084.wav'>WAV</a> <a href='audio/piece_084.png'>PNG</a></li>
+<li><strong>Small Taiko</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_085.wav')">Play</button> <a href='audio/piece_085.wav'>WAV</a> <a href='audio/piece_085.png'>PNG</a></li>
+<li><strong>Hyoshigi</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_086.wav')">Play</button> <a href='audio/piece_086.wav'>WAV</a> <a href='audio/piece_086.png'>PNG</a></li>
+<li><strong>Triangle</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_087.wav')">Play</button> <a href='audio/piece_087.wav'>WAV</a> <a href='audio/piece_087.png'>PNG</a></li>
+<li><strong>Cymbal</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_088.wav')">Play</button> <a href='audio/piece_088.wav'>WAV</a> <a href='audio/piece_088.png'>PNG</a></li>
+</ul>
+<h2>CX-30</h2><ul>
+<li><strong>Bass Drum</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_089.wav')">Play</button> <a href='audio/piece_089.wav'>WAV</a> <a href='audio/piece_089.png'>PNG</a></li>
+<li><strong>Snare Drum</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_090.wav')">Play</button> <a href='audio/piece_090.wav'>WAV</a> <a href='audio/piece_090.png'>PNG</a></li>
+<li><strong>Claves</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_091.wav')">Play</button> <a href='audio/piece_091.wav'>WAV</a> <a href='audio/piece_091.png'>PNG</a></li>
+<li><strong>Low Conga</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_092.wav')">Play</button> <a href='audio/piece_092.wav'>WAV</a> <a href='audio/piece_092.png'>PNG</a></li>
+<li><strong>High Conga</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_093.wav')">Play</button> <a href='audio/piece_093.wav'>WAV</a> <a href='audio/piece_093.png'>PNG</a></li>
+<li><strong>Cymbal</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_094.wav')">Play</button> <a href='audio/piece_094.wav'>WAV</a> <a href='audio/piece_094.png'>PNG</a></li>
+<li><strong>Hi-Hat</strong> <span class='prov'>[Partial]</span> <button type='button' onclick="playPreview('audio/piece_095.wav')">Play</button> <a href='audio/piece_095.wav'>WAV</a> <a href='audio/piece_095.png'>PNG</a></li>
+</ul>
+<h2>VZ-1</h2><ul>
+<li><strong>Po</strong> <span class='prov'>[MeasurementDerived]</span> <button type='button' onclick="playPreview('audio/piece_096.wav')">Play</button> <a href='audio/piece_096.wav'>WAV</a> <a href='audio/piece_096.png'>PNG</a></li>
+<li><strong>Pi</strong> <span class='prov'>[MeasurementDerived]</span> <button type='button' onclick="playPreview('audio/piece_097.wav')">Play</button> <a href='audio/piece_097.wav'>WAV</a> <a href='audio/piece_097.png'>PNG</a></li>
+<li><strong>Sha</strong> <span class='prov'>[MeasurementDerived]</span> <button type='button' onclick="playPreview('audio/piece_098.wav')">Play</button> <a href='audio/piece_098.wav'>WAV</a> <a href='audio/piece_098.png'>PNG</a></li>
+</ul>
+<h2>MK-1R</h2><ul>
+<li><strong>Bass Drum</strong> <span class='prov'>[ExternalReference]</span> <button type='button' onclick="playPreview('audio/piece_099.wav')">Play</button> <a href='audio/piece_099.wav'>WAV</a> <a href='audio/piece_099.png'>PNG</a></li>
+<li><strong>Block</strong> <span class='prov'>[ExternalReference]</span> <button type='button' onclick="playPreview('audio/piece_100.wav')">Play</button> <a href='audio/piece_100.wav'>WAV</a> <a href='audio/piece_100.png'>PNG</a></li>
+<li><strong>Bongo I</strong> <span class='prov'>[ExternalReference]</span> <button type='button' onclick="playPreview('audio/piece_101.wav')">Play</button> <a href='audio/piece_101.wav'>WAV</a> <a href='audio/piece_101.png'>PNG</a></li>
+<li><strong>Clave</strong> <span class='prov'>[ExternalReference]</span> <button type='button' onclick="playPreview('audio/piece_102.wav')">Play</button> <a href='audio/piece_102.wav'>WAV</a> <a href='audio/piece_102.png'>PNG</a></li>
+<li><strong>Bongo II</strong> <span class='prov'>[ExternalReference]</span> <button type='button' onclick="playPreview('audio/piece_103.wav')">Play</button> <a href='audio/piece_103.wav'>WAV</a> <a href='audio/piece_103.png'>PNG</a></li>
+<li><strong>Castanet</strong> <span class='prov'>[ExternalReference]</span> <button type='button' onclick="playPreview('audio/piece_104.wav')">Play</button> <a href='audio/piece_104.wav'>WAV</a> <a href='audio/piece_104.png'>PNG</a></li>
+</ul>
+<audio id='player' controls></audio><script>const player=document.getElementById('player');function playPreview(src){player.src=src;player.currentTime=0;player.play();}</script></body></html>
+
